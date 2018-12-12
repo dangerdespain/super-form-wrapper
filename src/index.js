@@ -8,19 +8,18 @@ const FormTemplate = (props)=>{
     MutationComponent,
     makeMutationProps, 
     QueryComponent,
-    makeQueryProps, 
+    queryProps, 
     FormComponent,
     makeFormProps,
   } = props
 
-  let queryProps = makeQueryProps ? makeQueryProps(props) : {}
   return (
     <QueryComponent {...queryProps}>{
       (queryResponse)=>{
         if(queryResponse && queryResponse.loading) return <LoadingComponent message='loading'/>;
-        let mutationProps = makeMutationProps ? makeMutationProps(props, queryResponse) : {}
+        let mutationProps = makeMutationProps ? makeMutationProps(queryResponse) : {}
         return (<MutationComponent {...mutationProps}>{(mutate,mutationResponse)=>{
-          let formProps = makeFormProps ? makeFormProps(props, queryResponse) : {}
+          let formProps = makeFormProps ? makeFormProps(queryResponse, mutate, mutationResponse) : {}
           return <FormComponent {...formProps} children={ renderProps => props.children(
             { formProps, renderProps, queryProps, queryResponse, mutationProps, mutationResponse }
           )}/> 
@@ -44,7 +43,7 @@ FormTemplate.propTypes = {
   MutationComponent : PropTypes.func, 
   makeMutationProps : PropTypes.func, 
   QueryComponent : PropTypes.func, 
-  makeQueryProps : PropTypes.func, 
+  queryProps : PropTypes.object, 
   FormComponent : PropTypes.func, 
   makeFormProps : PropTypes.func, 
 }

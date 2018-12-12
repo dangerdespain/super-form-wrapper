@@ -25,23 +25,22 @@ var FormTemplate = function FormTemplate(props) {
       MutationComponent = props.MutationComponent,
       makeMutationProps = props.makeMutationProps,
       QueryComponent = props.QueryComponent,
-      makeQueryProps = props.makeQueryProps,
+      queryProps = props.queryProps,
       FormComponent = props.FormComponent,
       makeFormProps = props.makeFormProps;
 
 
-  var queryProps = makeQueryProps ? makeQueryProps(props) : {};
   return React__default.createElement(
     QueryComponent,
     queryProps,
     function (queryResponse) {
       if (queryResponse && queryResponse.loading) return React__default.createElement(LoadingComponent, { message: 'loading' });
-      var mutationProps = makeMutationProps ? makeMutationProps(props, queryResponse) : {};
+      var mutationProps = makeMutationProps ? makeMutationProps(queryResponse) : {};
       return React__default.createElement(
         MutationComponent,
         mutationProps,
         function (mutate, mutationResponse) {
-          var formProps = makeFormProps ? makeFormProps(props, queryResponse) : {};
+          var formProps = makeFormProps ? makeFormProps(queryResponse, mutate, mutationResponse) : {};
           return React__default.createElement(FormComponent, _extends({}, formProps, { children: function children(renderProps) {
               return props.children({ formProps: formProps, renderProps: renderProps, queryProps: queryProps, queryResponse: queryResponse, mutationProps: mutationProps, mutationResponse: mutationResponse });
             } }));
@@ -77,7 +76,7 @@ FormTemplate.propTypes = {
   MutationComponent: PropTypes.func,
   makeMutationProps: PropTypes.func,
   QueryComponent: PropTypes.func,
-  makeQueryProps: PropTypes.func,
+  queryProps: PropTypes.object,
   FormComponent: PropTypes.func,
   makeFormProps: PropTypes.func
 };

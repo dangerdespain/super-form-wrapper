@@ -1,26 +1,36 @@
-# react-apollo-shrinkwrap
+# super-form-wrapper
 
 > Creates a configurable component wrapper for Apollo Query and Mutation. Form Agnostic! Move Faster.
 
-[![NPM](https://img.shields.io/npm/v/react-apollo-shrinkwrap.svg)](https://www.npmjs.com/package/react-apollo-shrinkwrap) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/super-form-wrapper.svg)](https://www.npmjs.com/package/super-form-wrapper) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-apollo-shrinkwrap
+npm install --save super-form-wrapper
 ```
 
 ## Usage
 
 ```jsx
 import React, { Component } from 'react'
+import { Query, Mutation } from 'apollo'
 
-import MyComponent from 'react-apollo-shrinkwrap'
+import SuperForm from 'super-form-wrapper'
 
 class Example extends Component {
   render () {
     return (
-      <MyComponent />
+      <SuperForm 
+        queryProps={()=>({ Query })}
+        makeMutationProps={(queryResponse)=>({ Mutation })}
+        makeFormProps={(queryResponse, mutate, mutationResponse)=>({ Form : Formik })}
+        children={({ mutationResponse })=>(
+          <Fragment/>
+            { ...component or form children here }
+          <Fragment/>
+        )}
+      />
     )
   }
 }
