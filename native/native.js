@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react-native'
 import PropTypes from 'prop-types'
 
 const FormTemplate = (props)=>{
