@@ -1,10 +1,10 @@
 {
-  "name": "react-apollo-shrinkwrap",
+  "name": "super-form-wrapper",
   "version": "1.0.0",
-  "description": "Creates a configurable component wrapper for Apollo Query and Mutation. Form Agnostic! Move Faster.",
+  "description": "Creates a configurable smart component wrapper. Query, Mutation, & Form Provider Agnostic! Move Faster.",
   "author": "dangerdespain",
   "license": "",
-  "repository": "dangerdespain/react-apollo-shrinkwrap",
+  "repository": "dangerdespain/super-form-wrapper",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
