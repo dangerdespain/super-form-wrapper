@@ -1,12 +1,12 @@
 {
   "name": "super-form-wrapper",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Creates a configurable smart component wrapper. Query, Mutation, & Form Provider Agnostic! Move Faster.",
   "author": "dangerdespain",
   "license": "",
   "repository": {
-    "name" : "dangerdespain/super-form-wrapper",
-    "url" : "https://github.com/dangerdespain/super-form-wrapper"
+    "name": "dangerdespain/super-form-wrapper",
+    "url": "https://github.com/dangerdespain/super-form-wrapper"
   },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
