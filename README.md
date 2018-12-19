@@ -27,7 +27,8 @@ class Example extends Component {
         makeFormProps={(queryResponse, mutate, mutationResponse)=>({ Form : Formik })}
         children={({ mutationResponse })=>(
           <Fragment/>
-            { ...component or form children here }
+            { ...component or form children here as a function, e.g. {(extendedProps)=><ChildComponent/>
+          } }
           <Fragment/>
         )}
       />

@@ -61,10 +61,10 @@ FormTemplate.defaultProps = {
     );
   },
   MutationComponent: function MutationComponent(props) {
-    return props.makeMutationProps ? props.Mutation : props.children(null);
+    return props.makeMutationProps ? props.Mutation : props.children(null, null);
   },
   QueryComponent: function QueryComponent(props) {
-    return props.makeQueryProps ? props.Query : props.children(null, null);
+    return props.queryProps ? props.Query : props.children(null);
   },
   FormComponent: function FormComponent(props) {
     return props.makeFormProps ? props.Formik : props.children(props);

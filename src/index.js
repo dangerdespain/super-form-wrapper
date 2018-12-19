@@ -33,8 +33,8 @@ const FormTemplate = (props)=>{
 // anything that can and should be customized by platform lives here, along with any defaults
 FormTemplate.defaultProps = {
   LoadingComponent : ({ children })=><Fragment>Loading</Fragment>,
-  MutationComponent : (props)=>props.makeMutationProps ? props.Mutation : props.children(null),
-  QueryComponent : (props)=>props.makeQueryProps ? props.Query  : props.children(null,null),
+  MutationComponent : (props)=>props.makeMutationProps ? props.Mutation : props.children(null,null),
+  QueryComponent : (props)=>props.queryProps ? props.Query  : props.children(null),
   FormComponent : (props)=>props.makeFormProps ? props.Formik : props.children(props),
 }
 
